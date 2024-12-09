@@ -8,7 +8,7 @@ public class StoredProceedures {
 
     public static void main(String a[]) throws Exception{
 
-        StoredProcedure5();
+        StoredProcedure6();
 
     }
 
@@ -100,5 +100,17 @@ public class StoredProceedures {
         cst.execute();
         System.out.println("The first name of employee with id 4: "+cst.getString(2));
         cst.close(); connection.close();
+    }
+    public static void StoredProcedure6() throws Exception {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        String url="jdbc:mysql://localhost:3306/testing";
+        String root_name= "root";
+        String password="password_19";
+        String query= "Create Index Product_unsold_Productions on Product_unsold(Total_productions);";
+        Connection connection=DriverManager.getConnection(url,root_name,password);
+        Statement st=connection.createStatement();
+        st.executeUpdate(query);
+        System.out.println("Index created for productions column in Product_unsold");
+        st.close(); connection.close();
     }
 }
