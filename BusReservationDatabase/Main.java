@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.concurrent.*;
 public class Main {
 
-    public static void main(String a[]) throws InterruptedException {
+    public static void main(String a[]) throws Exception {
 
         Scanner in=new Scanner(System.in);
 
@@ -20,7 +20,10 @@ public class Main {
                     System.out.print("Enter the options: ");
                     int ch=in.nextInt();
                     System.out.print("\n");
+                    TicketBooking tb=new TicketBooking();
+                    try{tb.ticketBooking(ch);} catch(Exception e) {System.out.println(e);}
                     break;
+
                 case 2:
                     System.out.println("Cancelling the Booking Process...."); Thread.sleep(2000);
                     System.out.println("Booking Process Cancelled");
@@ -34,6 +37,7 @@ public class Main {
         }
 
     }
+
     private static void printOptions() {
         System.out.println("----------------------\n");
         System.out.println("Choose a option to fullfill your request\n");
